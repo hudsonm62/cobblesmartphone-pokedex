@@ -23,7 +23,7 @@ jobs:
 
       - name: 🔧 Build all Mods
         shell: bash
-        run: ./gradlew build
+        run: chmod +x ./gradlew && ./gradlew build
 
       - name: 🩹 Get Short SHA
         id: short-sha
