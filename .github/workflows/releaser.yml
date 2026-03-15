@@ -1,0 +1,53 @@
+name: 📦 Releaser
+
+on: workflow_dispatch
+
+jobs:
+  gh-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: ⚙️ Checkout code
+        uses: actions/checkout@v6
+
+      - name: 🩹 Read gradle.properties as TOML
+        uses: hudsonm62/toml-action@v1
+        id: read_toml
+        with:
+          file: gradle.properties
+          field: mod_version
+          fail-missing-field: true
+
+      - name: 🔍 Check Tag doesn't exist
+        id: get-tag
+        run: |
+          $Version = "${{ steps.read_toml.outputs.value }}"
+          $Tag = "v$Version"
+
+          git fetch --tags
+          $tagExists = git tag --list $Tag
+          if ($tagExists) {
+            throw "❌ Tag '$Tag' already exists. Aborting release."
+          }
+          Write-Host "✅ Tag '$Tag' does not exist. Proceeding with release."
+
+          # Set output for next step
+          echo "version=$Tag" >> $env:GITHUB_OUTPUT
+
+      - name: 🏷️ Create Tag
+        id: create-tag
+        run: |
+          $Tag = "${{ steps.get-tag.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$Tag" -m "$Tag"
+          git push origin "$Tag"
+
+      - name: 🚀 Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get-tag.outputs.version }}
+          name: "Cobblemon Smartphone Pokedex App ${{ steps.get-tag.outputs.version }}"
+          generate_release_notes: true
+          prerelease: false

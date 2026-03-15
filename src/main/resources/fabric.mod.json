@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "smartphone-pokedex-app",
+  "version": "${version}",
+  "name": "Cobblemon Smartphone Pokedex App",
+  "description": "Pokedex App for Cobblemon Smartphone",
+  "authors": ["hudsonm62"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/cobblesmartphone-pokedex",
+    "sources": "https://github.com/hudsonm62/cobblesmartphone-pokedex",
+    "issues": "https://github.com/hudsonm62/cobblesmartphone-pokedex/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/smartphone-pokedex-app/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "value": "com.ziroau.cobblesmartphone.pokedex.SmartphonePokedexApp"
+      }
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.1",
+    "fabric-api": "*",
+    "cobblemon_smartphone": ">=1.0.3"
+  }
+}

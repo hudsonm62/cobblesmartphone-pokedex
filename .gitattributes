@@ -1,0 +1,23 @@
+# Default git behavior
+* text=auto
+
+### OVERRIDES ###
+
+# CRLF => LF
+LICENSE          text  eol=lf
+*.md             text  eol=lf
+*.gitattributes  text  eol=lf
+*.gitmodules     text  eol=lf
+*.gitignore      text  eol=lf
+*.json           text  eol=lf
+
+# LF/CRLF => BINARY
+*.db             binary
+
+### Gradle
+**/*.kt          text eol=lf
+**/*.java        text eol=lf
+**/*.gradle      text eol=lf
+**/gradlew       text eol=lf
+**/*.properties  text eol=lf
+*.bat            text eol=crlf
