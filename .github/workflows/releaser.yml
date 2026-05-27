@@ -5,6 +5,8 @@ on: workflow_dispatch
 defaults:
   run:
     shell: pwsh
+permissions:
+  contents: write
 
 jobs:
   gh-release:
