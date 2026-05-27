@@ -18,10 +18,11 @@ object PokedexAction : SmartphoneAction {
         return try {
             PokedexType.valueOf(SmartphonePokedexApp.config.pokedexColour.uppercase())
         } catch (e: Exception) {
-            logger.error("Failed to get pokedex colour type - Defaulting to 'blue'", e)
+            logger.error("Failed to get pokedex colour type - Defaulting to 'red'", e)
 
+            // TODO: Match Pokedex colour to smartphone colour, instead of using custom colour
             // return value
-            PokedexType.BLUE
+            PokedexType.RED
         }
     }
 
