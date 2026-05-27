@@ -11,6 +11,7 @@ LICENSE          text  eol=lf
 *.gitignore      text  eol=lf
 *.json           text  eol=lf
 *.yml            text  eol=lf
+*.mcmeta         text  eol=lf
 
 # LF/CRLF => BINARY
 *.db             binary

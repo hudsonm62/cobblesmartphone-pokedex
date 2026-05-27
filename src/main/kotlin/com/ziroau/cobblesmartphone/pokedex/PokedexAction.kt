@@ -11,8 +11,8 @@ import net.minecraft.util.Identifier
 
 object PokedexAction : SmartphoneAction {
     override val id = "smartphone-pokedex-app:pokedex"
-    override val texture = Identifier.of("smartphone-pokedex-app", "textures/gui/buttons/pokedex_icon.png")
-    override val hoverTexture = Identifier.of("smartphone-pokedex-app", "textures/gui/buttons/hover_pokedex_icon.png")
+    override val texture = Identifier.of(SmartphonePokedexApp.ID, "textures/gui/buttons/pokedex_icon.png")
+    override val hoverTexture = Identifier.of(SmartphonePokedexApp.ID, "textures/gui/buttons/hover_pokedex_icon.png")
 
     fun getPokedexType(): PokedexType {
         return try {
