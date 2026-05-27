@@ -2,6 +2,10 @@ name: 📦 Releaser
 
 on: workflow_dispatch
 
+defaults:
+  run:
+    shell: pwsh
+
 jobs:
   gh-release:
     runs-on: ubuntu-latest
@@ -11,18 +15,16 @@ jobs:
       - name: ⚙️ Checkout code
         uses: actions/checkout@v6
 
-      - name: 🩹 Read gradle.properties as TOML
-        uses: hudsonm62/toml-action@v1
-        id: read_toml
-        with:
-          file: gradle.properties
-          field: mod_version
-          fail-missing-field: true
+      - name: 🩹 Read mod version
+        id: version
+        run: |
+          $Version = (Get-Content gradle.properties | Select-String '^mod_version=').ToString().Split('=')[1]
+          echo "mod_version=$Version" >> $env:GITHUB_OUTPUT
 
       - name: 🔍 Check Tag doesn't exist
         id: get-tag
         run: |
-          $Version = "${{ steps.read_toml.outputs.value }}"
+          $Version = "${{ steps.version.outputs.mod_version }}"
           $Tag = "v$Version"
 
           git fetch --tags
