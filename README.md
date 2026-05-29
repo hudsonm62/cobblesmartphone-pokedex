@@ -1,3 +1,9 @@
+# ARCHIVED - Pokedex app has been added to the smartphone mod
+
+[Cobblemon Smartphone](https://modrinth.com/mod/cobblemon-smartphone)
+
+---
+
 # Pokedex App for Cobblemon Smartphone
 
 Simple mod that adds a Pokedex App to the [Cobblemon Smartphone Mod](https://modrinth.com/mod/cobblemon-smartphone).
